@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maison Élise — Hair Atelier</title>
+
+  <!-- Bootstrap 5.3.8 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bs-body-font-family: 'DM Sans', sans-serif;
+      --bs-body-bg: #F7F5F0;
+      --bs-body-color: #111110;
+      --accent: #C9A87C;
+      --off-white: #F7F5F0;
+      --warm-gray: #8A8880;
+      --dark: #111110;
+      --border-color: #E2DDD6;
+      --font-display: 'Cormorant Garamond', serif;
+    }
+
+    body { background: var(--off-white); }
+
+    /* TYPOGRAPHY */
+    .font-display { font-family: var(--font-display); }
+    .text-accent { color: var(--accent) !important; }
+    .text-warm { color: var(--warm-gray) !important; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .display-heading {
+      font-family: var(--font-display);
+      font-weight: 300;
+      line-height: 1.1;
+    }
+
+    /* NAV */
+    .navbar {
+      background: var(--off-white) !important;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .navbar-brand {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: .04em;
+      color: var(--dark) !important;
+    }
+
+    .nav-link {
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--warm-gray) !important;
+      padding: .4rem .8rem !important;
+      transition: color .2s;
+    }
+
+    .nav-link:hover { color: var(--dark) !important; }
+
+    .btn-book {
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: var(--dark);
+      color: var(--off-white) !important;
+      border-radius: 2px;
+      padding: .45rem 1.1rem;
+      border: none;
+      transition: background .2s;
+    }
+
+    .btn-book:hover { background: #333; }
+
+    /* HERO */
+    .hero-section {
+      min-height: 88vh;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .hero-text-col {
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-heading {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+    }
+
+    .hero-heading em { color: var(--accent); }
+
+    .hero-img-col {
+      background: #D9D2C5;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b0a898;
+      font-size: 13px;
+      letter-spacing: .05em;
+    }
+
+    .btn-dark-custom {
+      background: var(--dark);
+      color: var(--off-white);
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      padding: .75rem 1.75rem;
+      border: none;
+      transition: background .2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-dark-custom:hover { background: #333; color: var(--off-white); }
+
+    .btn-outline-custom {
+      border: 1px solid var(--dark);
+      color: var(--dark);
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      padding: .75rem 1.75rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all .2s;
+    }
+
+    .btn-outline-custom:hover { background: var(--dark); color: var(--off-white); }
+
+    /* ABOUT */
+    .about-section { border-top: 1px solid var(--border-color); }
+
+    .about-img-placeholder {
+      background: #DDD8CF;
+      height: 500px;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b0a898;
+      font-size: 13px;
+      letter-spacing: .05em;
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+
+    /* SERVICES */
+    .services-section { background: #F0EDE6; border-top: 1px solid var(--border-color); }
+
+    .service-card {
+      background: var(--off-white);
+      border: 1px solid var(--border-color);
+      border-radius: 2px;
+      padding: 2rem;
+      height: 100%;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .service-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .service-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 15px;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: .4rem;
+    }
+
+    .service-price-row {
+      border-top: 1px solid var(--border-color);
+      padding-top: 1rem;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .price-amount {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--accent);
+    }
+
+    /* GALLERY */
+    .gallery-section { border-top: 1px solid var(--border-color); }
+
+    .gallery-item {
+      background: #D9D3C6;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b0a898;
+      font-size: 12px;
+      letter-spacing: .05em;
+      overflow: hidden;
+      transition: filter .2s;
+    }
+
+    .gallery-item:hover { filter: brightness(.95); }
+
+    .gallery-tall { height: 460px; }
+    .gallery-short { height: 220px; }
+
+    /* TESTIMONIALS */
+    .testimonials-section {
+      background: var(--dark);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .testimonial-card {
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 2px;
+      padding: 2rem;
+      height: 100%;
+    }
+
+    .quote-mark {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      line-height: .5;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+
+    .quote-text {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.8;
+      color: rgba(247,245,240,.7);
+      margin-bottom: 1.5rem;
+    }
+
+    .quote-author {
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .quote-role {
+      font-size: 12px;
+      color: rgba(247,245,240,.4);
+      margin-top: .2rem;
+    }
+
+    /* CONTACT */
+    .contact-section { border-top: 1px solid var(--border-color); }
+
+    .contact-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: .6rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: var(--warm-gray);
+      margin-bottom: .7rem;
+    }
+
+    .form-label {
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: .3rem;
+    }
+
+    .form-control, .form-select {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border-color);
+      border-radius: 0;
+      padding: .6rem 0;
+      font-size: 14px;
+      color: var(--dark);
+      box-shadow: none !important;
+    }
+
+    .form-control:focus, .form-select:focus {
+      border-color: var(--dark);
+      background: transparent;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border-color);
+      background: var(--off-white);
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg sticky-top py-3 px-4">
+    <div class="container-fluid px-2">
+      <a class="navbar-brand" href="#">Maison Élise</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+        <ul class="navbar-nav align-items-center gap-1 me-3">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+        </ul>
+        <a href="#contact" class="btn-book">Book Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero-section row g-0">
+    <div class="col-lg-6 hero-text-col px-5 py-5">
+      <div class="py-4">
+        <p class="section-label mb-3">Hair Atelier · Toronto</p>
+        <h1 class="hero-heading mb-4">Where style<br>meets <em>intention</em></h1>
+        <p class="mb-4" style="color:var(--warm-gray); max-width:380px; line-height:1.8;">
+          Precision cuts, lived-in colour, and transformative treatments — all tailored to the way you actually live.
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#contact" class="btn-dark-custom">Book a Session</a>
+          <a href="#services" class="btn-outline-custom">View Services</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 hero-img-col">
+      <div class="text-center">
+        <i class="bi bi-image" style="font-size:2.5rem; opacity:.3; display:block; margin-bottom:.5rem;"></i>
+        Hero Photo
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about-section py-5" id="about">
+    <div class="container-fluid px-5">
+      <div class="row g-5 align-items-center py-4">
+        <div class="col-lg-5">
+          <div class="about-img-placeholder">Portrait Photo</div>
+        </div>
+        <div class="col-lg-7 ps-lg-5">
+          <p class="section-label">About</p>
+          <h2 class="display-heading" style="font-size:clamp(2rem,3.5vw,3rem); margin-bottom:1rem;">
+            Crafted by <em style="color:var(--accent);">Élise Dumont</em>
+          </h2>
+          <p style="color:var(--warm-gray); line-height:1.9;" class="mb-3">
+            With over a decade of experience in editorial and salon work, Élise brings a thoughtful eye and quiet precision to every appointment. Trained in Paris and Milan, she specialises in lived-in colour, effortless cuts, and restorative treatments.
+          </p>
+          <p style="color:var(--warm-gray); line-height:1.9;" class="mb-4">
+            The studio is a calm, intentional space — no rushed appointments, no distractions. Just skilled hands and a genuine conversation about what you want.
+          </p>
+          <div class="d-flex gap-5 pt-4" style="border-top:1px solid var(--border-color);">
+            <div>
+              <div class="stat-num">12+</div>
+              <div class="stat-label mt-1">Years experience</div>
+            </div>
+            <div>
+              <div class="stat-num">800+</div>
+              <div class="stat-label mt-1">Clients served</div>
+            </div>
+            <div>
+              <div class="stat-num">4</div>
+              <div class="stat-label mt-1">Industry awards</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section py-5" id="services">
+    <div class="container-fluid px-5">
+      <div class="py-4">
+        <p class="section-label">Services</p>
+        <h2 class="display-heading mb-5" style="font-size:clamp(2rem,3.5vw,3rem);">
+          What we <em style="color:var(--accent);">offer</em>
+        </h2>
+        <div class="row g-4">
+
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card">
+              <div class="service-icon"><i class="bi bi-scissors"></i></div>
+              <div class="service-name">Precision Cut</div>
+              <p style="font-size:13px; color:var(--warm-gray); line-height:1.7;">
+                A detailed consultation followed by a cut tailored to your face shape, texture, and lifestyle. Includes blowout.
+              </p>
+              <div class="service-price-row">
+                <span>From</span>
+                <span class="price-amount">$95</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card">
+              <div class="service-icon"><i class="bi bi-droplet-half"></i></div>
+              <div class="service-name">Colour & Balayage</div>
+              <p style="font-size:13px; color:var(--warm-gray); line-height:1.7;">
+                Seamless, hand-painted colour that grows out beautifully. Full colour, highlights, or full balayage available.
+              </p>
+              <div class="service-price-row">
+                <span>From</span>
+                <span class="price-amount">$180</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card">
+              <div class="service-icon"><i class="bi bi-palette"></i></div>
+              <div class="service-name">Colour Correction</div>
+              <p style="font-size:13px; color:var(--warm-gray); line-height:1.7;">
+                Restoring over-processed, brassy, or uneven colour to a healthy, balanced result you'll love.
+              </p>
+              <div class="service-price-row">
+                <span>From</span>
+                <span class="price-amount">$250</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card">
+              <div class="service-icon"><i class="bi bi-stars"></i></div>
+              <div class="service-name">Keratin Treatment</div>
+              <p style="font-size:13px; color:var(--warm-gray); line-height:1.7;">
+                Long-lasting smoothing treatment that eliminates frizz and reduces blow-dry time for up to 4 months.
+              </p>
+              <div class="service-price-row">
+                <span>From</span>
+                <span class="price-amount">$220</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card">
+              <div class="service-icon"><i class="bi bi-flower1"></i></div>
+              <div class="service-name">Bridal Package</div>
+              <p style="font-size:13px; color:var(--warm-gray); line-height:1.7;">
+                A full-day service including trial, wedding-day styling, and coordination for the bridal party.
+              </p>
+              <div class="service-price-row">
+                <span>From</span>
+                <span class="price-amount">$400</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card">
+              <div class="service-icon"><i class="bi bi-heart-pulse"></i></div>
+              <div class="service-name">Deep Conditioning</div>
+              <p style="font-size:13px; color:var(--warm-gray); line-height:1.7;">
+                Intensive repair treatment for damaged, dry, or colour-treated hair. Adds shine and restores elasticity.
+              </p>
+              <div class="service-price-row">
+                <span>From</span>
+                <span class="price-amount">$65</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section py-5" id="gallery">
+    <div class="container-fluid px-5">
+      <div class="py-4">
+        <p class="section-label">Portfolio</p>
+        <h2 class="display-heading mb-4" style="font-size:clamp(2rem,3.5vw,3rem);">
+          Recent <em style="color:var(--accent);">Work</em>
+        </h2>
+        <div class="row g-3">
+          <div class="col-8">
+            <div class="gallery-item gallery-short">Photo 1</div>
+          </div>
+          <div class="col-4 d-flex flex-column gap-3">
+            <div class="gallery-item flex-fill" style="height:220px; background:#CBC5B7;">Photo 4</div>
+          </div>
+          <div class="col-4">
+            <div class="gallery-item gallery-short" style="background:#C9C2B5;">Photo 2</div>
+          </div>
+          <div class="col-4">
+            <div class="gallery-item gallery-short" style="background:#D4CEC2;">Photo 3</div>
+          </div>
+          <div class="col-4">
+            <div class="gallery-item gallery-short" style="background:#D9D3C6;">Photo 5</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section py-5" id="testimonials">
+    <div class="container-fluid px-5">
+      <div class="py-4">
+        <p class="section-label">Testimonials</p>
+        <h2 class="display-heading text-white mb-5" style="font-size:clamp(2rem,3.5vw,3rem);">
+          Clients <em style="color:var(--accent);">speaking</em>
+        </h2>
+        <div class="row g-4">
+
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <span class="quote-mark">"</span>
+              <p class="quote-text">Élise completely transformed my hair. After years of bad colour jobs I was nervous, but she took the time to really understand what I wanted. The result was beyond what I imagined.</p>
+              <div class="quote-author">Sophie T.</div>
+              <div class="quote-role">Colour client, 3 years</div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <span class="quote-mark">"</span>
+              <p class="quote-text">Best haircut I've ever had. She asked all the right questions and the cut still looks amazing six weeks later. I won't go anywhere else.</p>
+              <div class="quote-author">Marcus A.</div>
+              <div class="quote-role">Cut & style client</div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <span class="quote-mark">"</span>
+              <p class="quote-text">Élise did my hair for my wedding and it was flawless. She kept me calm, the whole team on schedule, and the photos are stunning. Couldn't have asked for more.</p>
+              <div class="quote-author">Priya N.</div>
+              <div class="quote-role">Bridal package</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section py-5" id="contact">
+    <div class="container-fluid px-5">
+      <div class="row g-5 py-4">
+
+        <div class="col-lg-5">
+          <p class="section-label">Contact</p>
+          <h2 class="display-heading mb-3" style="font-size:clamp(2rem,3.5vw,3rem);">
+            Book an <em style="color:var(--accent);">appointment</em>
+          </h2>
+          <p class="mb-4" style="color:var(--warm-gray); line-height:1.9;">
+            Fill in the form and Élise will be in touch within one business day to confirm your booking and answer any questions.
+          </p>
+          <div class="mb-4">
+            <div class="contact-item"><span class="contact-dot"></span>123 Queen St W, Toronto, ON</div>
+            <div class="contact-item"><span class="contact-dot"></span>hello@maisonelise.com</div>
+            <div class="contact-item"><span class="contact-dot"></span>Tue – Sat, 9am – 7pm</div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <form>
+            <div class="row g-3 mb-3">
+              <div class="col-6">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" placeholder="Sophie">
+              </div>
+              <div class="col-6">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" placeholder="Thompson">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" placeholder="you@email.com">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone</label>
+              <input type="tel" class="form-control" placeholder="+1 (416) 000-0000">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Service</label>
+              <select class="form-select">
+                <option value="">Select a service</option>
+                <option>Precision Cut</option>
+                <option>Colour & Balayage</option>
+                <option>Colour Correction</option>
+                <option>Keratin Treatment</option>
+                <option>Bridal Package</option>
+                <option>Deep Conditioning</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Message</label>
+              <textarea class="form-control" rows="3" placeholder="Tell me a bit about your hair goals..."></textarea>
+            </div>
+            <button type="submit" class="btn-dark-custom">Send Request</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-4 px-5">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2" style="font-size:12px; color:var(--warm-gray);">
+      <span class="footer-brand">Maison Élise</span>
+      <span>© 2026 · All rights reserved</span>
+      <span>Toronto, ON</span>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5.3.8 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
